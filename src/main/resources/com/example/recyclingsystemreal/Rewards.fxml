@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.Separator?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            prefWidth="880" prefHeight="620"
+            style="-fx-background-color: #F0F4F0;">
+
+    <VBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+          style="-fx-padding: 32 36;" spacing="24">
+
+        <!-- Header row -->
+        <HBox style="-fx-alignment: center-left;">
+            <VBox HBox.hgrow="ALWAYS" spacing="2">
+                <Label text="Rewards Catalog"
+                       style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1A3A2A;"/>
+                <Label text="Redeem your points for great prizes"
+                       style="-fx-font-size: 13px; -fx-text-fill: #6B8C7A;"/>
+            </VBox>
+
+            <!-- Points balance badge -->
+            <HBox style="-fx-background-color: #1D9E75; -fx-background-radius: 10; -fx-padding: 12 20; -fx-alignment: center;" spacing="8">
+                <Label text="Your Points:"
+                       style="-fx-font-size: 13px; -fx-text-fill: #9FE1CB;"/>
+                <Label fx:id="pointsBalanceLabel" text="71.0 pts"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            </HBox>
+        </HBox>
+
+        <!-- Category filter row -->
+        <HBox spacing="10" style="-fx-alignment: center-left;">
+            <Button text="All"
+                    style="-fx-background-color: #1D9E75; -fx-text-fill: white; -fx-background-radius: 20; -fx-border-radius: 20; -fx-padding: 6 18; -fx-cursor: hand;"/>
+            <Button text="School Supplies"
+                    style="-fx-background-color: white; -fx-border-color: #C0D8C8; -fx-text-fill: #3A5A4A; -fx-background-radius: 20; -fx-border-radius: 20; -fx-padding: 6 18; -fx-cursor: hand;"/>
+            <Button text="Food and Drinks"
+                    style="-fx-background-color: white; -fx-border-color: #C0D8C8; -fx-text-fill: #3A5A4A; -fx-background-radius: 20; -fx-border-radius: 20; -fx-padding: 6 18; -fx-cursor: hand;"/>
+            <Button text="Merchandise"
+                    style="-fx-background-color: white; -fx-border-color: #C0D8C8; -fx-text-fill: #3A5A4A; -fx-background-radius: 20; -fx-border-radius: 20; -fx-padding: 6 18; -fx-cursor: hand;"/>
+        </HBox>
+
+        <!-- Scrollable rewards grid -->
+        <ScrollPane VBox.vgrow="ALWAYS" fitToWidth="true"
+                    style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;">
+            <FlowPane fx:id="rewardsFlowPane" hgap="16" vgap="16" prefWrapLength="800">
+
+                <!-- Reward Card: Ballpen -->
+                <VBox prefWidth="200" prefHeight="230"
+                      style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #D8EBE0; -fx-border-radius: 12; -fx-padding: 20;"
+                      spacing="8">
+                    <VBox style="-fx-background-color: #E1F5EE; -fx-background-radius: 8; -fx-alignment: center; -fx-min-height: 80; -fx-pref-height: 80;">
+                        <Label text="✏" style="-fx-font-size: 36px;"/>
+                    </VBox>
+                    <Label text="Ballpen"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1A3A2A;"/>
+                    <Label text="Standard blue or black ballpen"
+                           style="-fx-font-size: 11px; -fx-text-fill: #6B8C7A; -fx-wrap-text: true;"/>
+                    <Region VBox.vgrow="ALWAYS"/>
+                    <HBox style="-fx-alignment: center-left;">
+                        <Label text="10 pts"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1D9E75;"
+                               HBox.hgrow="ALWAYS"/>
+                        <Button text="Redeem"
+                                style="-fx-background-color: #1D9E75; -fx-text-fill: white; -fx-font-size: 11px; -fx-background-radius: 6; -fx-border-radius: 6; -fx-padding: 6 12; -fx-cursor: hand;"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Reward Card: Notebook -->
+                <VBox prefWidth="200" prefHeight="230"
+                      style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #D8EBE0; -fx-border-radius: 12; -fx-padding: 20;"
+                      spacing="8">
+                    <VBox style="-fx-background-color: #E1F5EE; -fx-background-radius: 8; -fx-alignment: center; -fx-min-height: 80; -fx-pref-height: 80;">
+                        <Label text="📓" style="-fx-font-size: 36px;"/>
+                    </VBox>
+                    <Label text="Notebook"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1A3A2A;"/>
+                    <Label text="80-leaf intermediate notebook"
+                           style="-fx-font-size: 11px; -fx-text-fill: #6B8C7A; -fx-wrap-text: true;"/>
+                    <Region VBox.vgrow="ALWAYS"/>
+                    <HBox style="-fx-alignment: center-left;">
+                        <Label text="25 pts"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1D9E75;"
+                               HBox.hgrow="ALWAYS"/>
+                        <Button text="Redeem"
+                                style="-fx-background-color: #1D9E75; -fx-text-fill: white; -fx-font-size: 11px; -fx-background-radius: 6; -fx-border-radius: 6; -fx-padding: 6 12; -fx-cursor: hand;"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Reward Card: Eco Tumbler (not enough points - greyed out) -->
+                <VBox prefWidth="200" prefHeight="230"
+                      style="-fx-background-color: #FAFAFA; -fx-background-radius: 12; -fx-border-color: #E0E0E0; -fx-border-radius: 12; -fx-padding: 20; -fx-opacity: 0.6;"
+                      spacing="8">
+                    <VBox style="-fx-background-color: #F0F0F0; -fx-background-radius: 8; -fx-alignment: center; -fx-min-height: 80; -fx-pref-height: 80;">
+                        <Label text="🧴" style="-fx-font-size: 36px;"/>
+                    </VBox>
+                    <Label text="Eco Tumbler"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #888888;"/>
+                    <Label text="Reusable campus tumbler"
+                           style="-fx-font-size: 11px; -fx-text-fill: #AAAAAA; -fx-wrap-text: true;"/>
+                    <Region VBox.vgrow="ALWAYS"/>
+                    <HBox style="-fx-alignment: center-left;">
+                        <Label text="100 pts"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #AAAAAA;"
+                               HBox.hgrow="ALWAYS"/>
+                        <Button text="Need more" disable="true"
+                                style="-fx-background-color: #E0E0E0; -fx-text-fill: #AAAAAA; -fx-font-size: 11px; -fx-background-radius: 6; -fx-border-radius: 6; -fx-padding: 6 12;"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Reward Card: Snack Voucher -->
+                <VBox prefWidth="200" prefHeight="230"
+                      style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #D8EBE0; -fx-border-radius: 12; -fx-padding: 20;"
+                      spacing="8">
+                    <VBox style="-fx-background-color: #E1F5EE; -fx-background-radius: 8; -fx-alignment: center; -fx-min-height: 80; -fx-pref-height: 80;">
+                        <Label text="🍪" style="-fx-font-size: 36px;"/>
+                    </VBox>
+                    <Label text="Canteen Snack Voucher"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1A3A2A; -fx-wrap-text: true;"/>
+                    <Label text="One snack at the campus canteen"
+                           style="-fx-font-size: 11px; -fx-text-fill: #6B8C7A; -fx-wrap-text: true;"/>
+                    <Region VBox.vgrow="ALWAYS"/>
+                    <HBox style="-fx-alignment: center-left;">
+                        <Label text="15 pts"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1D9E75;"
+                               HBox.hgrow="ALWAYS"/>
+                        <Button text="Redeem"
+                                style="-fx-background-color: #1D9E75; -fx-text-fill: white; -fx-font-size: 11px; -fx-background-radius: 6; -fx-border-radius: 6; -fx-padding: 6 12; -fx-cursor: hand;"/>
+                    </HBox>
+                </VBox>
+
+            </FlowPane>
+        </ScrollPane>
+
+    </VBox>
+</AnchorPane>

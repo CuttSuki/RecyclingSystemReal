@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="580" prefWidth="900" style="-fx-background-color: #0F1E2E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+
+    <HBox AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+
+        <!-- Left dark panel -->
+        <VBox prefHeight="580" prefWidth="420" spacing="0" style="-fx-background-color: #0F1E2E; -fx-alignment: center; -fx-padding: 60 50;">
+
+            <!-- Shield / admin icon -->
+            <VBox style="-fx-background-color: #1A2A3A; -fx-background-radius: 24; -fx-alignment: center; -fx-min-width: 80; -fx-min-height: 80; -fx-max-width: 80;">
+                <Label style="-fx-font-size: 36px;" text="🛡" textFill="WHITE" />
+            </VBox>
+
+            <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white; -fx-padding: 20 0 6 0;" text="Admin Portal" />
+            <Label style="-fx-font-size: 13px; -fx-text-fill: #7AAFCF; -fx-padding: 0 0 40 0;" text="EcoRewards Management System" />
+
+            <Separator style="-fx-background-color: #1A2A3A;" />
+
+            <VBox spacing="16" style="-fx-padding: 36 0 0 0;">
+                <HBox spacing="14" style="-fx-alignment: center-left;">
+                    <VBox style="-fx-background-color: #1A2A3A; -fx-background-radius: 8; -fx-min-width: 32; -fx-min-height: 32; -fx-alignment: center;">
+                        <Label style="-fx-font-size: 14px;" text="👥" textFill="WHITE" />
+                    </VBox>
+                    <VBox spacing="2">
+                        <Label style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #B5D4F4;" text="Manage Students" />
+                        <Label style="-fx-font-size: 11px; -fx-text-fill: #4A7A9A;" text="View and edit all student records" />
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="14" style="-fx-alignment: center-left;">
+                    <VBox style="-fx-background-color: #1A2A3A; -fx-background-radius: 8; -fx-min-width: 32; -fx-min-height: 32; -fx-alignment: center;">
+                        <Label style="-fx-font-size: 14px;" text="🎁" textFill="WHITE" />
+                    </VBox>
+                    <VBox spacing="2">
+                        <Label style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #B5D4F4;" text="Manage Rewards" />
+                        <Label style="-fx-font-size: 11px; -fx-text-fill: #4A7A9A;" text="Add or remove reward items" />
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="14" style="-fx-alignment: center-left;">
+                    <VBox style="-fx-background-color: #1A2A3A; -fx-background-radius: 8; -fx-min-width: 32; -fx-min-height: 32; -fx-alignment: center;">
+                        <Label style="-fx-font-size: 14px;" text="📊" textFill="WHITE" />
+                    </VBox>
+                    <VBox spacing="2">
+                        <Label style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #B5D4F4;" text="View Reports" />
+                        <Label style="-fx-font-size: 11px; -fx-text-fill: #4A7A9A;" text="Campus recycling statistics" />
+                    </VBox>
+                </HBox>
+            </VBox>
+        </VBox>
+
+        <!-- Right login form -->
+        <VBox prefHeight="580" prefWidth="480" spacing="0" style="-fx-background-color: #1A2A3A; -fx-alignment: center; -fx-padding: 60 56;">
+
+            <!-- Top badge -->
+            <HBox style="-fx-alignment: center; -fx-padding: 0 0 28 0;">
+                <Label style="-fx-background-color: #0F2A3A; -fx-text-fill: #7AAFCF; -fx-font-size: 11px; -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 6 16; -fx-letter-spacing: 1px;" text="ADMINISTRATOR ACCESS" />
+            </HBox>
+
+            <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;" text="Welcome, Admin" />
+            <Label style="-fx-font-size: 13px; -fx-text-fill: #7AAFCF; -fx-padding: 6 0 32 0;" text="Sign in to access the control panel" />
+
+            <!-- Admin Username -->
+            <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #B5D4F4;" text="Admin Username" />
+            <TextField fx:id="adminUsernameField" prefHeight="42" promptText="Enter admin username" style="-fx-background-color: #0F1E2E; -fx-border-color: #2D4A5A; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10 14; -fx-font-size: 14px; -fx-text-fill: white; -fx-prompt-text-fill: #4A7A9A;">
+                <VBox.margin><Insets bottom="20" top="6" /></VBox.margin>
+            </TextField>
+
+            <!-- Admin Password -->
+            <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #B5D4F4;" text="Password" />
+            <PasswordField fx:id="adminPasswordField" prefHeight="42" promptText="Enter admin password" style="-fx-background-color: #0F1E2E; -fx-border-color: #2D4A5A; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10 14; -fx-font-size: 14px; -fx-text-fill: white; -fx-prompt-text-fill: #4A7A9A;">
+                <VBox.margin><Insets bottom="28" top="6" /></VBox.margin>
+            </PasswordField>
+
+            <!-- Error label -->
+            <Label fx:id="errorLabel" style="-fx-text-fill: #E57373; -fx-font-size: 12px;" text="">
+                <VBox.margin><Insets bottom="8" /></VBox.margin>
+            </Label>
+
+            <!-- Sign In button -->
+            <Button fx:id="adminLoginBtn" prefHeight="46" prefWidth="368" style="-fx-background-color: #185FA5; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-border-radius: 8; -fx-background-radius: 8; -fx-cursor: hand;" text="Sign In to Admin Panel" />
+
+            <!-- Divider -->
+            <HBox spacing="10" style="-fx-alignment: center; -fx-padding: 24 0 16 0;">
+                <Separator HBox.hgrow="ALWAYS" />
+                <Label style="-fx-text-fill: #4A7A9A; -fx-font-size: 12px;" text="or" />
+                <Separator HBox.hgrow="ALWAYS" />
+            </HBox>
+
+            <!-- Back to student login -->
+            <HBox spacing="4" style="-fx-alignment: center;">
+                <Label style="-fx-font-size: 13px; -fx-text-fill: #4A7A9A;" text="Not an admin?" />
+                <Hyperlink style="-fx-text-fill: #7AAFCF; -fx-font-size: 13px; -fx-font-weight: bold; -fx-border-color: transparent;" text="Back to Student Login" />
+            </HBox>
+
+            <!-- Security notice -->
+            <HBox spacing="6" style="-fx-alignment: center; -fx-padding: 20 0 0 0;">
+                <Label style="-fx-font-size: 11px;" text="🔒" />
+                <Label style="-fx-font-size: 11px; -fx-text-fill: #2D4A5A;" text="This portal is for authorized personnel only" />
+            </HBox>
+        </VBox>
+    </HBox>
+</AnchorPane>
