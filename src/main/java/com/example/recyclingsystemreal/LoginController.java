@@ -1,6 +1,7 @@
 package com.example.recyclingsystemreal;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -30,7 +31,8 @@ public class LoginController {
     }
 
     @FXML
-    private void onAdminLoginHyperlinkClicked(){
-
+    private void onAdminLoginHyperlinkClicked() throws IOException{
+        Stage stage = (Stage) studentIdTextField.getScene().getWindow();
+        SceneSwitcher.switchScene(stage, "AdminLogin");
     }
 }

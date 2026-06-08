@@ -38,15 +38,26 @@
             <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1A3A2A;" text="Create Account" />
             <Label style="-fx-font-size: 13px; -fx-text-fill: #6B8C7A; -fx-padding: 6 0 28 0;" text="Fill in your details to get started" />
 
-            <!-- Full Name -->
-            <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #3A5A4A;" text="Full Name" />
-            <TextField fx:id="fullNameField" prefHeight="42" promptText="Juan dela Cruz" style="-fx-background-color: #F5F9F5; -fx-border-color: #C0D8C8; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10 14; -fx-font-size: 14px;">
-                <VBox.margin><Insets bottom="16" top="6" /></VBox.margin>
-            </TextField>
+            <!-- First Name & Last Name -->
+            <HBox spacing="12">
+                <VBox spacing="0" HBox.hgrow="ALWAYS">
+                    <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #3A5A4A;" text="First Name" />
+                    <TextField fx:id="firstNameTextField" prefHeight="42" prefWidth="214" promptText="Juan" style="-fx-background-color: #F5F9F5; -fx-border-color: #C0D8C8; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10 14; -fx-font-size: 14px;">
+                        <VBox.margin><Insets top="6" /></VBox.margin>
+                    </TextField>
+                </VBox>
+                <VBox spacing="0" HBox.hgrow="ALWAYS">
+                    <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #3A5A4A;" text="Last Name" />
+                    <TextField fx:id="lastNameTextField" prefHeight="42" prefWidth="214" promptText="dela Cruz" style="-fx-background-color: #F5F9F5; -fx-border-color: #C0D8C8; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10 14; -fx-font-size: 14px;">
+                        <VBox.margin><Insets top="6" /></VBox.margin>
+                    </TextField>
+                </VBox>
+                <VBox.margin><Insets bottom="16" /></VBox.margin>
+            </HBox>
 
             <!-- Student ID -->
             <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #3A5A4A;" text="Student ID" />
-            <TextField fx:id="studentIdField" prefHeight="42" promptText="2024-00123" style="-fx-background-color: #F5F9F5; -fx-border-color: #C0D8C8; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10 14; -fx-font-size: 14px;">
+            <TextField fx:id="studentIdTextField" prefHeight="42" promptText="2024-00123" style="-fx-background-color: #F5F9F5; -fx-border-color: #C0D8C8; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10 14; -fx-font-size: 14px;">
                 <VBox.margin><Insets bottom="16" top="6" /></VBox.margin>
             </TextField>
 
@@ -54,13 +65,13 @@
             <HBox spacing="12">
                 <VBox spacing="0" HBox.hgrow="ALWAYS">
                     <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #3A5A4A;" text="Department" />
-                    <ComboBox fx:id="departmentCombo" prefHeight="42" prefWidth="232" promptText="Select dept." style="-fx-background-color: #F5F9F5; -fx-border-color: #C0D8C8; -fx-border-radius: 8; -fx-background-radius: 8;">
+                    <ComboBox fx:id="departmentComboBox" prefHeight="42" prefWidth="232" promptText="Select dept." style="-fx-background-color: #F5F9F5; -fx-border-color: #C0D8C8; -fx-border-radius: 8; -fx-background-radius: 8;">
                         <VBox.margin><Insets top="6" /></VBox.margin>
                     </ComboBox>
                 </VBox>
                 <VBox spacing="0" HBox.hgrow="ALWAYS">
                     <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #3A5A4A;" text="Year Level" />
-                    <ComboBox fx:id="yearCombo" prefHeight="42" prefWidth="232" promptText="Select year" style="-fx-background-color: #F5F9F5; -fx-border-color: #C0D8C8; -fx-border-radius: 8; -fx-background-radius: 8;">
+                    <ComboBox fx:id="yearLevelComboBox" prefHeight="42" prefWidth="232" promptText="Select year" style="-fx-background-color: #F5F9F5; -fx-border-color: #C0D8C8; -fx-border-radius: 8; -fx-background-radius: 8;">
                         <VBox.margin><Insets top="6" /></VBox.margin>
                     </ComboBox>
                 </VBox>
@@ -69,13 +80,13 @@
 
             <!-- Password -->
             <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #3A5A4A;" text="Password" />
-            <PasswordField fx:id="passwordField" prefHeight="42" promptText="Create a password" style="-fx-background-color: #F5F9F5; -fx-border-color: #C0D8C8; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10 14; -fx-font-size: 14px;">
+            <PasswordField fx:id="passwordTextField" prefHeight="42" promptText="Create a password" style="-fx-background-color: #F5F9F5; -fx-border-color: #C0D8C8; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10 14; -fx-font-size: 14px;">
                 <VBox.margin><Insets bottom="16" top="6" /></VBox.margin>
             </PasswordField>
 
             <!-- Confirm Password -->
             <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #3A5A4A;" text="Confirm Password" />
-            <PasswordField fx:id="confirmPasswordField" prefHeight="42" promptText="Repeat password" style="-fx-background-color: #F5F9F5; -fx-border-color: #C0D8C8; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10 14; -fx-font-size: 14px;">
+            <PasswordField fx:id="confirmPasswordTextField" prefHeight="42" promptText="Repeat password" style="-fx-background-color: #F5F9F5; -fx-border-color: #C0D8C8; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10 14; -fx-font-size: 14px;">
                 <VBox.margin><Insets bottom="8" top="6" /></VBox.margin>
             </PasswordField>
 
@@ -83,11 +94,11 @@
                 <VBox.margin><Insets bottom="8" /></VBox.margin>
             </Label>
 
-            <Button fx:id="registerButton" prefHeight="44" prefWidth="448" style="-fx-background-color: #1D9E75; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-border-radius: 8; -fx-background-radius: 8; -fx-cursor: hand;" text="Create Account" />
+            <Button fx:id="createAccountButton" onAction="#onCreateAccountButtonClicked" prefHeight="44" prefWidth="448" style="-fx-background-color: #1D9E75; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-border-radius: 8; -fx-background-radius: 8; -fx-cursor: hand;" text="Create Account" />
 
             <HBox spacing="4" style="-fx-alignment: center; -fx-padding: 16 0 0 0;">
                 <Label style="-fx-font-size: 13px; -fx-text-fill: #6B8C7A;" text="Already have an account?" />
-                <Hyperlink style="-fx-text-fill: #1D9E75; -fx-font-size: 13px; -fx-font-weight: bold; -fx-border-color: transparent;" text="Sign in" />
+                <Hyperlink fx:id="signInHyperlink" onAction="#onSignInHyperlinkClicked" style="-fx-text-fill: #1D9E75; -fx-font-size: 13px; -fx-font-weight: bold; -fx-border-color: transparent;" text="Sign in" />
             </HBox>
         </VBox>
     </HBox>
