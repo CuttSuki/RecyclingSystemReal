@@ -19,7 +19,21 @@ public class Database {
             }
         }
     }
-    public static void registerUser(String firstName, String lastName, String studentId, int departmentId, String yearLevel, String hashedPassword){
-
+    public static void registerUser(String firstName, String lastName, String studentId, int departmentId, int yearLevelId, String hashedPassword) throws SQLException{
+        String sql = """
+                INSERT INTO STUDENTS (student_id, first_name, last_name, password, department_id, year_level_id) VALUES (?, ?, ?, ?, ?, ?)
+                """;
+        try (Connection conn = Database.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)){
+            pstmt.setString(1, studentId);
+            pstmt.setString(2, firstName);
+            pstmt.setString(3, lastName);
+            pstmt.setString(4, hashedPassword);
+            pstmt.setInt(5, departmentId);
+            pstmt.setInt(6, yearLevelId);
+            int rows = pstmt.executeUpdate();
+            System.out.println("Added " + rows + " rows.");
+        }
     }
+
 }

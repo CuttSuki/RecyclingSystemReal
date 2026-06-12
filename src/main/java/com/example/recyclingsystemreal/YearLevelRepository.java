@@ -20,5 +20,12 @@ public class YearLevelRepository {
             }
         }
     }
-
+    static int getYearLevelId(String yearLevelName){
+        for (YearLevel yearLevel : yearLevelRepo){
+            if (yearLevel.getYearLevel().equals(yearLevelName)){
+                return yearLevel.getYearLevelId();
+            }
+        }
+        return -1;
+    }
 }

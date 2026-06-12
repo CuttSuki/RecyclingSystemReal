@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="680" prefWidth="1100" style="-fx-background-color: #F0F4F0;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.recycling.DashboardController">
+<BorderPane prefHeight="680" prefWidth="1100" style="-fx-background-color: #F0F4F0;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.recyclingsystemreal.DashboardController">
 
-    <!-- ====== LEFT SIDEBAR ====== -->
     <left>
         <VBox prefHeight="680" prefWidth="220" spacing="0" style="-fx-background-color: #1A3A2A; -fx-padding: 0;">
 
-            <!-- Brand -->
             <VBox spacing="2" style="-fx-padding: 28 24 24 24;">
                 <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="♻ EcoRewards" />
                 <Label style="-fx-font-size: 11px; -fx-text-fill: #5DCAA5;" text="Campus Recycling" />
@@ -17,19 +26,16 @@
 
             <Separator style="-fx-background-color: #2D5A3A;" />
 
-            <!-- Nav items -->
             <VBox spacing="4" style="-fx-padding: 16 12;">
-                <Button onAction="#showDashboard" prefHeight="40" prefWidth="196" style="-fx-background-color: #1D9E75; -fx-text-fill: white; -fx-font-size: 13px; -fx-alignment: center-left; -fx-background-radius: 8; -fx-border-radius: 8; -fx-cursor: hand;" text="  🏠  Dashboard" />
-                <Button onAction="#showSubmit" prefHeight="40" prefWidth="196" style="-fx-background-color: transparent; -fx-text-fill: #9FE1CB; -fx-font-size: 13px; -fx-alignment: center-left; -fx-background-radius: 8; -fx-cursor: hand;" text="  ♻  Submit Bottles" />
-                <Button onAction="#showRewards" prefHeight="40" prefWidth="196" style="-fx-background-color: transparent; -fx-text-fill: #9FE1CB; -fx-font-size: 13px; -fx-alignment: center-left; -fx-background-radius: 8; -fx-cursor: hand;" text="  🎁  Rewards" />
-                <Button onAction="#showLeaderboard" prefHeight="40" prefWidth="196" style="-fx-background-color: transparent; -fx-text-fill: #9FE1CB; -fx-font-size: 13px; -fx-alignment: center-left; -fx-background-radius: 8; -fx-cursor: hand;" text="  🏆  Leaderboard" />
-                <Button onAction="#showHistory" prefHeight="40" prefWidth="196" style="-fx-background-color: transparent; -fx-text-fill: #9FE1CB; -fx-font-size: 13px; -fx-alignment: center-left; -fx-background-radius: 8; -fx-cursor: hand;" text="  📋  My History" />
+                <Button prefHeight="40" prefWidth="196" style="-fx-background-color: #1D9E75; -fx-text-fill: white; -fx-font-size: 13px; -fx-alignment: center-left; -fx-background-radius: 8; -fx-border-radius: 8; -fx-cursor: hand;" text="  🏠  Dashboard" />
+                <Button prefHeight="40" prefWidth="196" style="-fx-background-color: transparent; -fx-text-fill: #9FE1CB; -fx-font-size: 13px; -fx-alignment: center-left; -fx-background-radius: 8; -fx-cursor: hand;" text="  ♻  Submit Bottles" />
+                <Button prefHeight="40" prefWidth="196" style="-fx-background-color: transparent; -fx-text-fill: #9FE1CB; -fx-font-size: 13px; -fx-alignment: center-left; -fx-background-radius: 8; -fx-cursor: hand;" text="  🎁  Rewards" />
+                <Button prefHeight="40" prefWidth="196" style="-fx-background-color: transparent; -fx-text-fill: #9FE1CB; -fx-font-size: 13px; -fx-alignment: center-left; -fx-background-radius: 8; -fx-cursor: hand;" text="  🏆  Leaderboard" />
+                <Button prefHeight="40" prefWidth="196" style="-fx-background-color: transparent; -fx-text-fill: #9FE1CB; -fx-font-size: 13px; -fx-alignment: center-left; -fx-background-radius: 8; -fx-cursor: hand;" text="  📋  My History" />
             </VBox>
 
-            <!-- Spacer -->
             <Region VBox.vgrow="ALWAYS" />
 
-            <!-- User info + logout -->
             <VBox spacing="8" style="-fx-padding: 16 20 24 20; -fx-background-color: #0F2A1A;">
                 <HBox spacing="10" style="-fx-alignment: center-left;">
                     <VBox style="-fx-background-color: #1D9E75; -fx-background-radius: 20; -fx-min-width: 36; -fx-min-height: 36; -fx-alignment: center;">
@@ -40,16 +46,14 @@
                         <Label fx:id="userIdLabel" style="-fx-font-size: 11px; -fx-text-fill: #5DCAA5;" text="2024-00123" />
                     </VBox>
                 </HBox>
-                <Button onAction="#handleLogout" prefHeight="32" prefWidth="180" style="-fx-background-color: transparent; -fx-border-color: #2D5A3A; -fx-border-radius: 6; -fx-background-radius: 6; -fx-text-fill: #9FE1CB; -fx-font-size: 12px; -fx-cursor: hand;" text="Sign Out" />
+                <Button prefHeight="32" prefWidth="180" style="-fx-background-color: transparent; -fx-border-color: #2D5A3A; -fx-border-radius: 6; -fx-background-radius: 6; -fx-text-fill: #9FE1CB; -fx-font-size: 12px; -fx-cursor: hand;" text="Sign Out" />
             </VBox>
         </VBox>
     </left>
 
-    <!-- ====== MAIN CONTENT ====== -->
     <center>
         <VBox spacing="24" style="-fx-padding: 32 36;">
 
-            <!-- Page header -->
             <HBox style="-fx-alignment: center-left;">
                 <VBox HBox.hgrow="ALWAYS">
                     <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1A3A2A;" text="Dashboard" />
@@ -57,7 +61,6 @@
                 </VBox>
             </HBox>
 
-            <!-- Stat cards row -->
             <GridPane hgap="16" vgap="16">
                 <columnConstraints>
                     <ColumnConstraints percentWidth="25" />
@@ -66,57 +69,50 @@
                     <ColumnConstraints percentWidth="25" />
                 </columnConstraints>
 
-                <!-- Total Bottles -->
                 <VBox spacing="6" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #D8EBE0; -fx-border-radius: 12; -fx-padding: 20;" GridPane.columnIndex="0">
                     <Label style="-fx-font-size: 12px; -fx-text-fill: #6B8C7A;" text="Total Bottles" />
                     <Label fx:id="totalBottlesLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1A3A2A;" text="0" />
                     <Label style="-fx-font-size: 11px; -fx-text-fill: #1D9E75;" text="♻ +12 this week" />
                 </VBox>
 
-                <!-- Points Balance -->
                 <VBox spacing="6" style="-fx-background-color: #1D9E75; -fx-background-radius: 12; -fx-padding: 20;" GridPane.columnIndex="1">
                     <Label style="-fx-font-size: 12px; -fx-text-fill: #9FE1CB;" text="Points Balance" />
                     <Label fx:id="pointsLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white;" text="0" />
                     <Label style="-fx-font-size: 11px; -fx-text-fill: #9FE1CB;" text="pts available" />
                 </VBox>
 
-                <!-- Rewards Redeemed -->
                 <VBox spacing="6" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #D8EBE0; -fx-border-radius: 12; -fx-padding: 20;" GridPane.columnIndex="2">
                     <Label style="-fx-font-size: 12px; -fx-text-fill: #6B8C7A;" text="Rewards Redeemed" />
                     <Label fx:id="rewardsLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1A3A2A;" text="0" />
                     <Label style="-fx-font-size: 11px; -fx-text-fill: #6B8C7A;" text="🎁 total redeemed" />
                 </VBox>
 
-                <!-- Campus Rank -->
                 <VBox spacing="6" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #D8EBE0; -fx-border-radius: 12; -fx-padding: 20;" GridPane.columnIndex="3">
                     <Label style="-fx-font-size: 12px; -fx-text-fill: #6B8C7A;" text="Campus Rank" />
                     <Label fx:id="rankLabel" prefHeight="40.0" prefWidth="160.0" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1A3A2A;" text="Unranked" />
                     <Label style="-fx-font-size: 11px; -fx-text-fill: #6B8C7A;" text="🏆 of 248 students" />
                 </VBox>
-            <rowConstraints>
-               <RowConstraints />
-            </rowConstraints>
+                <rowConstraints>
+                    <RowConstraints />
+                </rowConstraints>
             </GridPane>
 
-            <!-- Bottom: Submit bottles + Recent history side by side -->
             <HBox spacing="20" VBox.vgrow="ALWAYS">
 
-                <!-- Quick Submit Panel -->
                 <VBox prefWidth="300" spacing="16" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #D8EBE0; -fx-border-radius: 12; -fx-padding: 24;">
                     <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #1A3A2A;" text="Submit Bottles" />
 
                     <VBox spacing="6">
                         <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #3A5A4A;" text="Number of bottles" />
-                        <TextField fx:id="bottleCountField" prefHeight="42" promptText="Enter count (e.g. 10)" style="-fx-background-color: #F5F9F5; -fx-border-color: #C0D8C8; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10 14; -fx-font-size: 14px;" />
+                        <TextField fx:id="bottleCountTextField" editable="false" prefHeight="42" promptText="Enter count (e.g. 10)" style="-fx-background-color: #F5F9F5; -fx-border-color: #C0D8C8; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10 14; -fx-font-size: 14px;" />
                     </VBox>
 
-                    <!-- Points preview -->
                     <HBox spacing="8" style="-fx-background-color: #E1F5EE; -fx-background-radius: 8; -fx-padding: 12 16; -fx-alignment: center-left;">
                         <Label style="-fx-font-size: 13px; -fx-text-fill: #0F6E56;" text="Points you'll earn:" />
                         <Label fx:id="pointsPreviewLabel" style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #1D9E75;" text="0.0 pts" />
                     </HBox>
 
-                    <Button onAction="#handleSubmit" prefHeight="44" prefWidth="252" style="-fx-background-color: #1D9E75; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-radius: 8; -fx-cursor: hand;" text="Submit Bottles" />
+                    <Button prefHeight="44" prefWidth="252" style="-fx-background-color: #1D9E75; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-radius: 8; -fx-cursor: hand;" text="Submit Bottles" />
 
                     <Label fx:id="submitStatusLabel" prefWidth="252" style="-fx-font-size: 12px; -fx-text-fill: #1D9E75; -fx-alignment: center;" text="" />
 
@@ -126,7 +122,6 @@
                     <Label style="-fx-font-size: 12px; -fx-text-fill: #A0B8A8;" text="Minimum: 1 bottle" />
                 </VBox>
 
-                <!-- Recent Transactions Table -->
                 <VBox spacing="12" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #D8EBE0; -fx-border-radius: 12; -fx-padding: 24;" HBox.hgrow="ALWAYS">
                     <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #1A3A2A;" text="Recent Transactions" />
 
