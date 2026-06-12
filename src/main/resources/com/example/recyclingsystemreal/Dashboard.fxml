@@ -77,13 +77,13 @@
 
                 <VBox spacing="6" style="-fx-background-color: #1D9E75; -fx-background-radius: 12; -fx-padding: 20;" GridPane.columnIndex="1">
                     <Label style="-fx-font-size: 12px; -fx-text-fill: #9FE1CB;" text="Points Balance" />
-                    <Label fx:id="pointsLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white;" text="0" />
+                    <Label fx:id="pointsBalanceLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white;" text="0" />
                     <Label style="-fx-font-size: 11px; -fx-text-fill: #9FE1CB;" text="pts available" />
                 </VBox>
 
                 <VBox spacing="6" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #D8EBE0; -fx-border-radius: 12; -fx-padding: 20;" GridPane.columnIndex="2">
                     <Label style="-fx-font-size: 12px; -fx-text-fill: #6B8C7A;" text="Rewards Redeemed" />
-                    <Label fx:id="rewardsLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1A3A2A;" text="0" />
+                    <Label fx:id="rewardsRedeemedLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1A3A2A;" text="0" />
                     <Label style="-fx-font-size: 11px; -fx-text-fill: #6B8C7A;" text="🎁 total redeemed" />
                 </VBox>
 
@@ -112,7 +112,7 @@
                         <Label fx:id="pointsPreviewLabel" style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #1D9E75;" text="0.0 pts" />
                     </HBox>
 
-                    <Button prefHeight="44" prefWidth="252" style="-fx-background-color: #1D9E75; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-radius: 8; -fx-cursor: hand;" text="Submit Bottles" />
+                    <Button fx:id="submitBottlesButton" onAction="#onSubmitBottlesButtonClicked" prefHeight="44" prefWidth="252" style="-fx-background-color: #1D9E75; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-radius: 8; -fx-cursor: hand;" text="Submit Bottles" />
 
                     <Label fx:id="submitStatusLabel" prefWidth="252" style="-fx-font-size: 12px; -fx-text-fill: #1D9E75; -fx-alignment: center;" text="" />
 

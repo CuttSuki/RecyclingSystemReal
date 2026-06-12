@@ -30,10 +30,12 @@ public class LoginController {
                 Alerter.showAlert(Alert.AlertType.ERROR, "Missing Input field", "Please make an input on every fields!");
                 return;
             }
-            if(LoginValidator.validateLogin(studentId, password)){
+            if (LoginValidator.validateLogin(studentId, password)){
                 Stage stage = (Stage) studentIdTextField.getScene().getWindow();
                 StudentUser studentUser = UserDataCreator.createStudentUserData(studentId);
+                UserRewards userRewards = UserDataCreator.createUserRewards(studentId);
                 UserData.setStudentUser(studentUser);
+                UserData.setUserRewards(userRewards);
                 SceneSwitcher.switchScene(stage, "Dashboard");
             } else {
                 Alerter.showAlert(Alert.AlertType.ERROR, "Invalid Credentials", "Please input valid credentials.");

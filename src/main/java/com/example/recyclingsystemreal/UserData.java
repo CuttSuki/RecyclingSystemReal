@@ -6,7 +6,15 @@ public class UserData {
     public static void setStudentUser(StudentUser setStudentUser){
         studentUser = setStudentUser;
     }
+
+    public static void setUserRewards(UserRewards setUserRewards){
+        userRewards = setUserRewards;
+    }
     public static StudentUser getStudentUser(){
         return studentUser;
     }
+    public static UserRewards getUserRewards(){
+        return userRewards;
+    }
+
 }
