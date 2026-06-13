@@ -91,7 +91,7 @@
 
                     <VBox spacing="6" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #D8EBE0; -fx-border-radius: 12; -fx-padding: 20;" GridPane.columnIndex="3">
                         <Label style="-fx-font-size: 12px; -fx-text-fill: #6B8C7A;" text="Campus Rank" />
-                        <Label fx:id="rankLabel" prefHeight="40.0" prefWidth="160.0" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1A3A2A;" text="Unranked" />
+                        <Label fx:id="dashboardRankLabel" prefHeight="40.0" prefWidth="160.0" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1A3A2A;" text="Unranked" />
                         <Label style="-fx-font-size: 11px; -fx-text-fill: #6B8C7A;" text="🏆 of 248 students" />
                     </VBox>
                     <rowConstraints>
@@ -146,10 +146,10 @@
                         <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1A3A2A;" text="🏆 Leaderboard" />
                         <Label style="-fx-font-size: 13px; -fx-text-fill: #6B8C7A;" text="Top recyclers on campus this semester" />
                     </VBox>
-                    <Label fx:id="yourRankBadge" style="-fx-background-color: #1D9E75; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 8 20;" text="Your Rank: #3" />
+                    <Label fx:id="yourRankLabel" style="-fx-background-color: #1D9E75; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 8 20;" text="Your Rank: #3" />
                 </HBox>
 
-                <HBox spacing="16" style="-fx-alignment: bottom-center; -fx-padding: 0 0 8 0;">
+                <HBox fx:id="topLeaderboardHBox" spacing="16" style="-fx-alignment: bottom-center; -fx-padding: 0 0 8 0;">
 
                     <VBox prefWidth="200" spacing="8" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #D8EBE0; -fx-border-radius: 12; -fx-padding: 20; -fx-alignment: center;">
                         <Label style="-fx-font-size: 28px;" text="🥈" />
