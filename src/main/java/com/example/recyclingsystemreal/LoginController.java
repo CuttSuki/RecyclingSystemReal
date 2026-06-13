@@ -1,14 +1,12 @@
 package com.example.recyclingsystemreal;
 
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class LoginController {
     @FXML private TextField studentIdTextField;
@@ -33,9 +31,9 @@ public class LoginController {
             if (LoginValidator.validateLogin(studentId, password)){
                 Stage stage = (Stage) studentIdTextField.getScene().getWindow();
                 StudentUser studentUser = UserDataCreator.createStudentUserData(studentId);
-                UserRewards userRewards = UserDataCreator.createUserRewards(studentId);
+                UserStats userStats = UserDataCreator.createUserStats(studentId);
                 UserData.setStudentUser(studentUser);
-                UserData.setUserRewards(userRewards);
+                UserData.setUserStats(userStats);
                 SceneSwitcher.switchScene(stage, "Dashboard");
             } else {
                 Alerter.showAlert(Alert.AlertType.ERROR, "Invalid Credentials", "Please input valid credentials.");

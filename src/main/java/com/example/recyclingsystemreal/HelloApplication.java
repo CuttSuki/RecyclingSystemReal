@@ -3,6 +3,7 @@ package com.example.recyclingsystemreal;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,5 +16,10 @@ public class HelloApplication extends Application {
         Database.testDatabaseConnection();
         DepartmentRepository.createDepartmentRepo();
         YearLevelRepository.createYearLevelRepo();
+    }
+    @Override
+    public void stop() throws SQLException {
+        System.out.println("Saving Data..");
+        DataSaver.saveStudentStats();
     }
 }

@@ -2,19 +2,19 @@ package com.example.recyclingsystemreal;
 
 public class UserData {
     private static StudentUser studentUser = null;
-    private static UserRewards userRewards = null;
+    private static UserStats userStats = null;
     public static void setStudentUser(StudentUser setStudentUser){
         studentUser = setStudentUser;
     }
 
-    public static void setUserRewards(UserRewards setUserRewards){
-        userRewards = setUserRewards;
+    public static void setUserStats(UserStats setUserStats){
+        userStats = setUserStats;
     }
     public static StudentUser getStudentUser(){
         return studentUser;
     }
-    public static UserRewards getUserRewards(){
-        return userRewards;
+    public static UserStats getUserStats(){
+        return userStats;
     }
 
 }

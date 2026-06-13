@@ -1,11 +1,11 @@
 package com.example.recyclingsystemreal;
 
-public class UserRewards {
+public class UserStats {
     private int totalBottles;
     private int pointsBalance;
     private int rewardsRedeemed;
 
-    UserRewards(int totalBottles, int pointsBalance, int rewardsRedeemed){
+    UserStats(int totalBottles, int pointsBalance, int rewardsRedeemed){
         this.totalBottles = totalBottles;
         this.pointsBalance = pointsBalance;
         this.rewardsRedeemed = rewardsRedeemed;

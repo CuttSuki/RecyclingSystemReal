@@ -1,7 +1,5 @@
 package com.example.recyclingsystemreal;
 
-import javafx.scene.chart.PieChart;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,7 +27,7 @@ public class UserDataCreator {
         return null;
     }
 
-    public static UserRewards createUserRewards(String studentId) throws SQLException{
+    public static UserStats createUserStats(String studentId) throws SQLException{
         String sql = """
                 SELECT total_bottles, points_balance, rewards_redeemed FROM vw_students_stats WHERE student_id = ? LIMIT 1
                 """;
@@ -38,7 +36,7 @@ public class UserDataCreator {
             pstmt.setString(1, studentId);
             try(ResultSet rs = pstmt.executeQuery()){
                 if (rs.next()){
-                    return new UserRewards(
+                    return new UserStats(
                             rs.getInt("total_bottles"),
                             rs.getInt("points_balance"),
                             rs.getInt("rewards_redeemed")
