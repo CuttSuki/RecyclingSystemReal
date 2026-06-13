@@ -42,8 +42,8 @@
                         <Label fx:id="avatarLabel" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: white;" text="JD" />
                     </VBox>
                     <VBox spacing="2">
-                        <Label fx:id="userNameLabel" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: white;" text="Juan Dela Cruz" />
-                        <Label fx:id="userIdLabel" style="-fx-font-size: 11px; -fx-text-fill: #5DCAA5;" text="2024-00123" />
+                        <Label fx:id="studentNameLabel" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: white;" text="Juan Dela Cruz" />
+                        <Label fx:id="studentIdLabel" style="-fx-font-size: 11px; -fx-text-fill: #5DCAA5;" text="2024-00123" />
                     </VBox>
                 </HBox>
                 <Button prefHeight="32" prefWidth="180" style="-fx-background-color: transparent; -fx-border-color: #2D5A3A; -fx-border-radius: 6; -fx-background-radius: 6; -fx-text-fill: #9FE1CB; -fx-font-size: 12px; -fx-cursor: hand;" text="Sign Out" />
@@ -104,7 +104,7 @@
 
                     <VBox spacing="6">
                         <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #3A5A4A;" text="Number of bottles" />
-                        <TextField fx:id="bottleCountTextField" editable="false" prefHeight="42" promptText="Enter count (e.g. 10)" style="-fx-background-color: #F5F9F5; -fx-border-color: #C0D8C8; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10 14; -fx-font-size: 14px;" />
+                        <TextField fx:id="bottleCountTextField" onKeyTyped="#onBottleCountTextFieldKeyTyped" prefHeight="42" promptText="Enter count (e.g. 10)" style="-fx-background-color: #F5F9F5; -fx-border-color: #C0D8C8; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10 14; -fx-font-size: 14px;" />
                     </VBox>
 
                     <HBox spacing="8" style="-fx-background-color: #E1F5EE; -fx-background-radius: 8; -fx-padding: 12 16; -fx-alignment: center-left;">
