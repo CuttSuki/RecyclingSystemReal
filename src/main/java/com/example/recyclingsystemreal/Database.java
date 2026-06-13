@@ -63,4 +63,18 @@ public class Database {
             }
         }
     }
+
+    public static int getStudentLeaderboardCount() throws SQLException{
+        String sql = """
+                 SELECT COUNT(*) as total FROM vw_students_stats LIMIT 100
+                """;
+        try (Connection conn = Database.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()){
+            if (rs.next()){
+                return rs.getInt("total");
+            }
+        }
+        return -1;
+    }
 }

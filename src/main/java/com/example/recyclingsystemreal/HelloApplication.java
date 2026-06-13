@@ -16,6 +16,7 @@ public class HelloApplication extends Application {
         Database.testDatabaseConnection();
         DepartmentRepository.createDepartmentRepo();
         YearLevelRepository.createYearLevelRepo();
+        System.out.println(Database.getStudentLeaderboardCount());
     }
     @Override
     public void stop() throws SQLException {
