@@ -10,8 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -32,11 +31,13 @@ public class DashboardController {
     @FXML private Label pointsPreviewLabel;
     @FXML private Label dashboardRankLabel;
     @FXML private Label yourRankLabel;
+    @FXML private Label rewardsPointsBalanceLabel;
     @FXML private Button leaderboardButton;
     @FXML private HBox topLeaderboardHBox;
     @FXML private VBox leaderboardView;
     @FXML private VBox dashboardView;
     @FXML private VBox rewardsView;
+    @FXML private FlowPane rewardsFlowPane;
     @FXML private TableColumn<LeaderboardStudent, String> rankColumn;
     @FXML private TableColumn<LeaderboardStudent, String> firstNameColumn;
     @FXML private TableColumn<LeaderboardStudent, String> lastNameColumn;
@@ -47,6 +48,7 @@ public class DashboardController {
 
     @FXML private void initialize() throws SQLException {
         LeaderboardRepo.createLeaderboardRepo();
+        RewardsRepo.createRewardsRepo();
         dashboardView.setVisible(true);
         leaderboardView.setVisible(false);
         rewardsView.setVisible(false);
@@ -56,6 +58,7 @@ public class DashboardController {
         initCells();
         setupLeaderboardPagination();
         processLeaderboardLabels();
+        setupRewardCards();
     }
 
     private void initCells(){
@@ -122,9 +125,9 @@ public class DashboardController {
         //Get the top 3 students
         for(int i = 0; i < 3; ++i) {
             LeaderboardStudent leaderboardStudent = LeaderboardRepo.getLeaderboardStudents().get(i);
-            VBox childVBox = getVBoxFromId("Top" + Integer.toString(i + 1));
+            VBox childVBox = (VBox) topLeaderboardHBox.lookup("#Top" + Integer.toString(i + 1));
             if (childVBox == null){
-                System.out.println("This VBOX doesnt exist.");
+                System.out.println("This VBOX ID doesnt exist: " + "Top" + Integer.toString(i + 1));
                 break;
             }
             Label nameLabel = (Label) childVBox.getChildren().get(1);
@@ -139,15 +142,7 @@ public class DashboardController {
         }
     }
 
-    private VBox getVBoxFromId(String vboxId){
-        for (Node node : topLeaderboardHBox.getChildren()){
-            VBox currentVBox = (VBox) node;
-            if(vboxId.equals(currentVBox.getId())){
-                return currentVBox;
-            }
-        }
-        return null;
-    }
+
 
     private void animateViewEntrance(Node view) {
         // 1. Set the initial state (hidden and shifted down)
@@ -172,9 +167,66 @@ public class DashboardController {
     private void reloadLabels() {
         totalBottlesLabel.setText(Integer.toString(UserData.getUserStats().getTotalBottles()));
         pointsBalanceLabel.setText(Integer.toString(UserData.getUserStats().getPointsBalance()));
+        rewardsPointsBalanceLabel.setText(Integer.toString(UserData.getUserStats().getPointsBalance()) + " points");
         rewardsRedeemedLabel.setText(Integer.toString(UserData.getUserStats().getRewardsRedeemed()));
         studentNameLabel.setText(UserData.getStudentUser().getFirstName() + " " + UserData.getStudentUser().getLastName());
         studentIdLabel.setText(UserData.getStudentUser().getStudentId());
+    }
+
+    private void setupRewardCards(){
+        for (Rewards reward : RewardsRepo.getRewardsRepo()){
+            rewardsFlowPane.getChildren().add(createRewardVBox(reward.getRewardName(), reward.getRewardName(),
+                    reward.getDescription(), Integer.toString(reward.getPointCost()) + " points"));
+        }
+    }
+    public VBox createRewardVBox(String emojiIcon, String title, String description, String points) {
+        // 1. Root VBox
+        VBox rootVBox = new VBox(8);
+        rootVBox.setId("rewardVBoxTemplate");
+        rootVBox.setPrefSize(200, 230);
+        rootVBox.setStyle("-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #D8EBE0; -fx-border-radius: 12; -fx-padding: 20;");
+
+        // 2. Icon Container (VBox)
+        VBox iconContainer = new VBox();
+        iconContainer.setStyle("-fx-background-color: #E1F5EE; -fx-background-radius: 8; -fx-alignment: center; -fx-min-height: 80; -fx-pref-height: 80;");
+        Label iconLabel = new Label(emojiIcon);
+        iconLabel.setStyle("-fx-font-size: 36px;");
+        iconContainer.getChildren().add(iconLabel);
+
+        // 3. Title Label
+        Label titleLabel = new Label(title);
+        titleLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1A3A2A;");
+
+        // 4. Description Label
+        Label descLabel = new Label(description);
+        descLabel.setWrapText(true);
+        descLabel.setStyle("-fx-font-size: 11px; -fx-text-fill: #6B8C7A; -fx-wrap-text: true;");
+
+        // 5. Spacer Region
+        Region spacer = new Region();
+        VBox.setVgrow(spacer, Priority.ALWAYS);
+
+        // 6. Bottom HBox (Points & Redeem Button)
+        HBox bottomHBox = new HBox();
+        bottomHBox.setStyle("-fx-alignment: center-left;");
+
+        Label pointsLabel = new Label(points);
+        pointsLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1D9E75;");
+        pointsLabel.setMaxWidth(Double.MAX_VALUE); // Necessary for HBox.hgrow to work properly
+        HBox.setHgrow(pointsLabel, Priority.ALWAYS);
+
+        Button redeemButton = new Button("Redeem");
+        redeemButton.setStyle("-fx-background-color: #1D9E75; -fx-text-fill: white; -fx-font-size: 11px; -fx-background-radius: 6; -fx-border-radius: 6; -fx-padding: 6 12; -fx-cursor: hand;");
+
+        // Optional: Add action event to the button
+        // redeemButton.setOnAction(e -> System.out.println("Redeemed: " + title));
+
+        bottomHBox.getChildren().addAll(pointsLabel, redeemButton);
+
+        // 7. Assemble the Root VBox
+        rootVBox.getChildren().addAll(iconContainer, titleLabel, descLabel, spacer, bottomHBox);
+
+        return rootVBox;
     }
 
     @FXML private void onSubmitBottlesButtonClicked(){
