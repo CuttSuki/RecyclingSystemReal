@@ -9,6 +9,7 @@ public class LeaderboardStudent {
     private int totalBottles;
     private int pointsBalance;
     private int rewardsRedeemed;
+    private String rank;
 
     LeaderboardStudent(
             String studentId, String firstName, String lastName,
@@ -44,7 +45,7 @@ public class LeaderboardStudent {
     public String getYearLevelName(){
         return yearLevelName;
     }
-
+    public String getRank() { return rank; }
     public int getTotalBottles(){
         return totalBottles;
     }
@@ -56,4 +57,7 @@ public class LeaderboardStudent {
     public int getRewardsRedeemed() {
         return rewardsRedeemed;
     }
+
+    public void setRank(String newRank) { rank = newRank; }
+
 }

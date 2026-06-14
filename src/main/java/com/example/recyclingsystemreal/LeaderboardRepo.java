@@ -12,6 +12,7 @@ public class LeaderboardRepo {
     private static ObservableList<LeaderboardStudent> leaderboardStudents = FXCollections.observableArrayList();
 
     public static void createLeaderboardRepo() throws SQLException {
+        leaderboardStudents.clear();
         String sql = """
                  SELECT student_id, first_name, last_name, department_name, 
                         year_level_name, total_bottles, points_balance, 
@@ -33,6 +34,10 @@ public class LeaderboardRepo {
                         rs.getInt("rewards_redeemed")
                 );
                 leaderboardStudents.add(leaderboardStudent);
+            }
+            //Set their ranks
+            for (LeaderboardStudent leaderboardStudent : leaderboardStudents){
+                leaderboardStudent.setRank(LeaderboardManager.checkRanking(leaderboardStudent.getStudentId()));
             }
         }
     }
