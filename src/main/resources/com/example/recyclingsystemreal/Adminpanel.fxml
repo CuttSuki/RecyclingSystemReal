@@ -29,17 +29,15 @@
 
             <VBox spacing="4" style="-fx-padding: 16 12;">
                 <Button prefHeight="40" prefWidth="196" style="-fx-background-color: #185FA5; -fx-text-fill: white; -fx-font-size: 13px; -fx-alignment: center-left; -fx-background-radius: 8; -fx-cursor: hand;" text="  📊  Overview" />
-                <Button prefHeight="40" prefWidth="196" style="-fx-background-color: transparent; -fx-text-fill: #B5D4F4; -fx-font-size: 13px; -fx-alignment: center-left; -fx-background-radius: 8; -fx-cursor: hand;" text="  👥  Students" />
-                <Button  prefHeight="40" prefWidth="196" style="-fx-background-color: transparent; -fx-text-fill: #B5D4F4; -fx-font-size: 13px; -fx-alignment: center-left; -fx-background-radius: 8; -fx-cursor: hand;" text="  ♻  Transactions" />
+                <Button prefHeight="40" prefWidth="196" style="-fx-background-color: transparent; -fx-text-fill: #B5D4F4; -fx-font-size: 13px; -fx-alignment: center-left; -fx-background-radius: 8; -fx-cursor: hand;" text="  ♻  Transactions" />
                 <Button prefHeight="40" prefWidth="196" style="-fx-background-color: transparent; -fx-text-fill: #B5D4F4; -fx-font-size: 13px; -fx-alignment: center-left; -fx-background-radius: 8; -fx-cursor: hand;" text="  🎁  Manage Rewards" />
-                <Button  prefHeight="40" prefWidth="196" style="-fx-background-color: transparent; -fx-text-fill: #B5D4F4; -fx-font-size: 13px; -fx-alignment: center-left; -fx-background-radius: 8; -fx-cursor: hand;" text="  📈  Reports" />
             </VBox>
 
             <Region VBox.vgrow="ALWAYS" />
 
             <VBox spacing="8" style="-fx-padding: 16 20 24 20; -fx-background-color: #0F1E2E;">
                 <Label style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: white;" text="Admin" />
-                <Button  prefHeight="32" prefWidth="180" style="-fx-background-color: transparent; -fx-border-color: #2D4A5A; -fx-border-radius: 6; -fx-background-radius: 6; -fx-text-fill: #B5D4F4; -fx-font-size: 12px; -fx-cursor: hand;" text="Sign Out" />
+                <Button prefHeight="32" prefWidth="180" style="-fx-background-color: transparent; -fx-border-color: #2D4A5A; -fx-border-radius: 6; -fx-background-radius: 6; -fx-text-fill: #B5D4F4; -fx-font-size: 12px; -fx-cursor: hand;" text="Sign Out" />
             </VBox>
         </VBox>
     </left>
@@ -117,7 +115,7 @@
                         <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #3A5A4A;" text="Add Reward Item" />
                         <TextField fx:id="rewardNameField" prefHeight="36" promptText="Reward name" style="-fx-background-color: #F5F9F5; -fx-border-color: #C0D8C8; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 8 12;" />
                         <TextField fx:id="rewardPtsField" prefHeight="36" promptText="Points required" style="-fx-background-color: #F5F9F5; -fx-border-color: #C0D8C8; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 8 12;" />
-                        <Button  prefHeight="36" prefWidth="220" style="-fx-background-color: #1D9E75; -fx-text-fill: white; -fx-font-size: 13px; -fx-background-radius: 6; -fx-border-radius: 6; -fx-cursor: hand;" text="Add Reward" />
+                        <Button prefHeight="36" prefWidth="220" style="-fx-background-color: #1D9E75; -fx-text-fill: white; -fx-font-size: 13px; -fx-background-radius: 6; -fx-border-radius: 6; -fx-cursor: hand;" text="Add Reward" />
                     </VBox>
 
                     <Separator />
