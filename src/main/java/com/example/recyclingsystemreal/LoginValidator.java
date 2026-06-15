@@ -25,4 +25,27 @@ public class LoginValidator {
         }
         return true;
     }
+
+    /**
+     * Validates administrator credentials against the admin_table.
+     */
+    public static boolean validateAdminLogin(String username, String password) throws SQLException {
+        String sql = """
+                 SELECT admin_password FROM admin_table WHERE admin_user = ?;
+                """;
+        try(Connection conn = Database.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
+            pstmt.setString(1, username);
+            try(ResultSet rs = pstmt.executeQuery()){
+                if(!rs.next()){
+                    return false;
+                }
+                String hashedPassword = rs.getString("admin_password");
+                if(!PasswordHasher.checkPassword(password, hashedPassword)){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

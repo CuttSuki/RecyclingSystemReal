@@ -17,6 +17,7 @@ public class HelloApplication extends Application {
         DepartmentRepository.createDepartmentRepo();
         YearLevelRepository.createYearLevelRepo();
         System.out.println(Database.getStudentLeaderboardCount());
+        System.out.println(PasswordHasher.hashPassword("suwakomoriya"));
     }
     @Override
     public void stop() throws SQLException {

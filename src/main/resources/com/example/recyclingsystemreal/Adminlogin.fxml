@@ -52,13 +52,13 @@
 
             <!-- Admin Username -->
             <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #B5D4F4;" text="Admin Username" />
-            <TextField fx:id="adminUsernameField" prefHeight="42" promptText="Enter admin username" style="-fx-background-color: #0F1E2E; -fx-border-color: #2D4A5A; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10 14; -fx-font-size: 14px; -fx-text-fill: white; -fx-prompt-text-fill: #4A7A9A;">
+            <TextField fx:id="adminUsernameTextField" prefHeight="42" promptText="Enter admin username" style="-fx-background-color: #0F1E2E; -fx-border-color: #2D4A5A; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10 14; -fx-font-size: 14px; -fx-text-fill: white; -fx-prompt-text-fill: #4A7A9A;">
                 <VBox.margin><Insets bottom="20" top="6" /></VBox.margin>
             </TextField>
 
             <!-- Admin Password -->
             <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #B5D4F4;" text="Password" />
-            <PasswordField fx:id="adminPasswordField" prefHeight="42" promptText="Enter admin password" style="-fx-background-color: #0F1E2E; -fx-border-color: #2D4A5A; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10 14; -fx-font-size: 14px; -fx-text-fill: white; -fx-prompt-text-fill: #4A7A9A;">
+            <PasswordField fx:id="adminPasswordTextField" prefHeight="42" promptText="Enter admin password" style="-fx-background-color: #0F1E2E; -fx-border-color: #2D4A5A; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10 14; -fx-font-size: 14px; -fx-text-fill: white; -fx-prompt-text-fill: #4A7A9A;">
                 <VBox.margin><Insets bottom="28" top="6" /></VBox.margin>
             </PasswordField>
 
@@ -68,7 +68,7 @@
             </Label>
 
             <!-- Sign In button -->
-            <Button fx:id="adminLoginBtn" prefHeight="46" prefWidth="368" style="-fx-background-color: #185FA5; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-border-radius: 8; -fx-background-radius: 8; -fx-cursor: hand;" text="Sign In to Admin Panel" />
+            <Button fx:id="adminLoginBtn" onAction="#onAdminLoginButtonClicked" prefHeight="46" prefWidth="368" style="-fx-background-color: #185FA5; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-border-radius: 8; -fx-background-radius: 8; -fx-cursor: hand;" text="Sign In to Admin Panel" />
 
             <!-- Divider -->
             <HBox spacing="10" style="-fx-alignment: center; -fx-padding: 24 0 16 0;">
@@ -80,7 +80,7 @@
             <!-- Back to student login -->
             <HBox spacing="4" style="-fx-alignment: center;">
                 <Label style="-fx-font-size: 13px; -fx-text-fill: #4A7A9A;" text="Not an admin?" />
-                <Hyperlink style="-fx-text-fill: #7AAFCF; -fx-font-size: 13px; -fx-font-weight: bold; -fx-border-color: transparent;" text="Back to Student Login" />
+                <Hyperlink fx:id="backToStudentLoginHyperlinl" onAction="#onBackToStudentLoginHyperlinkClicked" style="-fx-text-fill: #7AAFCF; -fx-font-size: 13px; -fx-font-weight: bold; -fx-border-color: transparent;" text="Back to Student Login" />
             </HBox>
 
             <!-- Security notice -->
