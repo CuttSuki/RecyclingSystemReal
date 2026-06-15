@@ -1,14 +1,22 @@
 package com.example.recyclingsystemreal;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import java.sql.*;
 
 public class Database {
-    private static final String URL ="jdbc:postgresql://localhost:5432/postgres";
-    private static final String USER = "postgres";
-    private static final String PASSWORD = "password123";
+
+    // Load environment variables from the .env file
+    private static final Dotenv dotenv = Dotenv.load();
+
+    // Retrieve the credentials
+    private static final String URL = dotenv.get("DB_URL");
+    private static final String USER = dotenv.get("DB_USER");
+    private static final String PASSWORD = dotenv.get("DB_PASSWORD");
+
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
+
     public static void testDatabaseConnection() throws SQLException{
         String query = "SELECT VERSION() as version";
         try (Connection conn = getConnection();
@@ -19,6 +27,7 @@ public class Database {
             }
         }
     }
+
     public static void registerUser(String firstName, String lastName, String studentId, int departmentId, int yearLevelId, String hashedPassword) throws SQLException {
         // Separate your queries
         String insertStudentSql = "INSERT INTO STUDENTS (student_id, first_name, last_name, password, department_id, year_level_id) VALUES (?, ?, ?, ?, ?, ?)";
