@@ -44,14 +44,27 @@ public class DashboardController {
     @FXML private TableColumn<LeaderboardStudent, String> departmentNameColumn;
     @FXML private TableColumn<LeaderboardStudent, String> yearLevelNameColumn;
     @FXML private TableColumn<LeaderboardStudent, Integer> totalBottlesColumn;
+    @FXML private TableColumn<RewardsTransaction, String> rewardNameColumn;
+    @FXML private TableColumn<RewardsTransaction, Integer> rewardCostColumn;
+    @FXML private TableColumn<RewardsTransaction, Integer> pointsLeftColumn;
+    @FXML private TableColumn<RewardsTransaction, String> rewardCreatedAtColumn;
+    @FXML private TableColumn<BottleSubmissionTransaction, Integer> bottlesSubmittedColumn;
+    @FXML private TableColumn<BottleSubmissionTransaction, Integer> totalBottlesTransactionColumn;
+    @FXML private TableColumn<BottleSubmissionTransaction, Integer> pointsGainedColumn;
+    @FXML private TableColumn<BottleSubmissionTransaction, Integer> totalPointsColumn;
+    @FXML private TableColumn<BottleSubmissionTransaction, String> submissionCreatedAtColumn;
     @FXML private TableView<LeaderboardStudent> leaderboardStudentTableView;
-
+    @FXML private TableView<RewardsTransaction> rewardsHistoryTableView;
+    @FXML private TableView<BottleSubmissionTransaction> bottleSubmissionTransactionTableView;
+    @FXML private VBox transactionHistoryView;
     @FXML private void initialize() throws SQLException {
         LeaderboardRepo.createLeaderboardRepo();
         RewardsRepo.createRewardsRepo();
+        reloadTransactionHistories();
         dashboardView.setVisible(true);
         leaderboardView.setVisible(false);
         rewardsView.setVisible(false);
+        transactionHistoryView.setVisible(false);
         dashboardRankLabel.setText(LeaderboardManager.checkRanking(UserData.getStudentUser().getStudentId()));
         yourRankLabel.setText("Your Rank: #" + LeaderboardManager.checkRanking(UserData.getStudentUser().getStudentId()));
         reloadLabels();
@@ -61,6 +74,13 @@ public class DashboardController {
         setupRewardCards();
     }
 
+    private void reloadTransactionHistories() throws SQLException{
+        TransactionRepo.createTransactionRepo(UserData.getStudentUser().getStudentId());
+        TransactionRepo.createBottleSubmissionTransactionRepo(UserData.getStudentUser().getStudentId());
+        rewardsHistoryTableView.setItems(TransactionRepo.getTransactionRepo());
+        bottleSubmissionTransactionTableView.setItems(TransactionRepo.getBottleSubmissionTransactionRepo());
+    }
+
     private void initCells(){
         rankColumn.setCellValueFactory(new PropertyValueFactory<>("rank"));
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -68,6 +88,15 @@ public class DashboardController {
         departmentNameColumn.setCellValueFactory(new PropertyValueFactory<>("departmentName"));
         yearLevelNameColumn.setCellValueFactory(new PropertyValueFactory<>("yearLevelName"));
         totalBottlesColumn.setCellValueFactory(new PropertyValueFactory<>("totalBottles"));
+        rewardNameColumn.setCellValueFactory(new PropertyValueFactory<>("rewardName"));
+        rewardCostColumn.setCellValueFactory(new PropertyValueFactory<>("pointsCost"));
+        pointsLeftColumn.setCellValueFactory(new PropertyValueFactory<>("pointsLeft"));
+        rewardCreatedAtColumn.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
+        bottlesSubmittedColumn.setCellValueFactory(new PropertyValueFactory<>("bottlesSubmitted"));
+        totalBottlesTransactionColumn.setCellValueFactory(new PropertyValueFactory<>("totalBottles"));
+        pointsGainedColumn.setCellValueFactory(new PropertyValueFactory<>("pointsGained"));
+        totalPointsColumn.setCellValueFactory(new PropertyValueFactory<>("totalPoints"));
+        submissionCreatedAtColumn.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
     }
 
     /**
@@ -217,10 +246,9 @@ public class DashboardController {
 
         Button redeemButton = new Button("Redeem");
         redeemButton.setStyle("-fx-background-color: #1D9E75; -fx-text-fill: white; -fx-font-size: 11px; -fx-background-radius: 6; -fx-border-radius: 6; -fx-padding: 6 12; -fx-cursor: hand;");
-
-        // Optional: Add action event to the button
-        // redeemButton.setOnAction(e -> System.out.println("Redeemed: " + title));
-
+        redeemButton.setOnAction(e -> {
+            redeemReward(title, Integer.parseInt(points.split(" ")[0]));
+        });
         bottomHBox.getChildren().addAll(pointsLabel, redeemButton);
 
         // 7. Assemble the Root VBox
@@ -229,17 +257,49 @@ public class DashboardController {
         return rootVBox;
     }
 
-    @FXML private void onSubmitBottlesButtonClicked(){
+    private void redeemReward(String rewardName, int pointsCost){
+        try{
+            int rewardId = RewardsRepo.getRewardId(rewardName);
+            if (rewardId == -1){
+                Alerter.showAlert(Alert.AlertType.ERROR, "Reward Name does not exist", "Reward name "
+                        + rewardName + " does not exist!");
+                return;
+            }
+            String studentId = UserData.getStudentUser().getStudentId();
+            int currentPoints = UserData.getUserStats().getPointsBalance();
+            if (currentPoints < pointsCost){
+                Alerter.showAlert(Alert.AlertType.ERROR, "Not enough balance", "You do not have enough points to redeem this item!");
+                return;
+            }
+            int pointsLeft = currentPoints - pointsCost;
+            UserData.getUserStats().setPointsBalance(pointsLeft);
+            TransactionRepo.createRewardTransaction(studentId, rewardId, pointsLeft);
+            reloadTransactionHistories();
+            reloadLabels();
+            Alerter.showAlert(Alert.AlertType.CONFIRMATION, "Success", "Reward redeemed successfully!");
+        } catch (Exception e){
+            e.printStackTrace();
+            Alerter.showAlert(Alert.AlertType.ERROR, "Error", e.getMessage());
+        }
+
+    }
+
+    @FXML private void onSubmitBottlesButtonClicked() throws SQLException{
         if (!bottleCountTextField.getText().matches("\\d++")){
             return;
         }
         int currentBottles = UserData.getUserStats().getTotalBottles();
         int currentPointsBalance = UserData.getUserStats().getPointsBalance();
-        int newBottleCount = Integer.parseInt(bottleCountTextField.getText());
-        int newPoints = Integer.parseInt(pointsPreviewLabel.getText());
-        UserData.getUserStats().setTotalBottles(currentBottles + newBottleCount);
-        UserData.getUserStats().setPointsBalance(currentPointsBalance + newPoints);
+        int bottlesToAdd = Integer.parseInt(bottleCountTextField.getText());
+        int pointsToAdd = Integer.parseInt(pointsPreviewLabel.getText());
+        int newBottleCount = currentBottles + bottlesToAdd;
+        int newPoints = currentPointsBalance + pointsToAdd;
+        String studentId = UserData.getStudentUser().getStudentId();
+        UserData.getUserStats().setTotalBottles(newBottleCount);
+        UserData.getUserStats().setPointsBalance(newPoints);
+        TransactionRepo.createBottleSubmissionTransaction(studentId,bottlesToAdd, newBottleCount, pointsToAdd, newPoints);
         reloadLabels();
+        reloadTransactionHistories();
         Alerter.showAlert(Alert.AlertType.CONFIRMATION, "Update success", "Bottle count and points preview has been updated!");
         bottleCountTextField.setText("");
     }
@@ -266,6 +326,7 @@ public class DashboardController {
         leaderboardView.setVisible(true);
         dashboardView.setVisible(false);
         rewardsView.setVisible(false);
+        transactionHistoryView.setVisible(false);
         animateViewEntrance(leaderboardView);
     }
 
@@ -273,6 +334,7 @@ public class DashboardController {
         dashboardView.setVisible(true);
         leaderboardView.setVisible(false);
         rewardsView.setVisible(false);
+        transactionHistoryView.setVisible(false);
         animateViewEntrance(dashboardView);
     }
 
@@ -280,7 +342,15 @@ public class DashboardController {
         leaderboardView.setVisible(false);
         dashboardView.setVisible(false);
         rewardsView.setVisible(true);
+        transactionHistoryView.setVisible(false);
         animateViewEntrance(rewardsView);
     }
 
+    @FXML private void onTransactionHistoryButtonClicked(){
+        leaderboardView.setVisible(false);
+        dashboardView.setVisible(false);
+        rewardsView.setVisible(false);
+        transactionHistoryView.setVisible(true);
+        animateViewEntrance(transactionHistoryView);
+    }
 }

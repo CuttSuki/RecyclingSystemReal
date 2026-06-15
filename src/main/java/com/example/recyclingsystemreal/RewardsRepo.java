@@ -32,4 +32,13 @@ public class RewardsRepo {
     static ArrayList<Rewards> getRewardsRepo(){
         return rewardsRepo;
     }
+
+    static int getRewardId(String rewardName){
+        for(Rewards reward : getRewardsRepo()){
+            if(reward.getRewardName().equals(rewardName)){
+                return reward.getRewardId();
+            }
+        }
+        return -1;
+    }
 }
