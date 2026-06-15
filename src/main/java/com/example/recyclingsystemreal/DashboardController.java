@@ -273,6 +273,7 @@ public class DashboardController {
             }
             int pointsLeft = currentPoints - pointsCost;
             UserData.getUserStats().setPointsBalance(pointsLeft);
+            UserData.getUserStats().setRewardsRedeemed(UserData.getUserStats().getRewardsRedeemed() + 1);
             TransactionRepo.createRewardTransaction(studentId, rewardId, pointsLeft);
             reloadTransactionHistories();
             reloadLabels();
